@@ -10,7 +10,7 @@ const connection = mysql.createConnection(
     }
 )
 
-// Conectar a la base de datos codenotch
+// Conectar a la base de datos bbd_escuela
 
 connection.connect((error) => {
     if (!error) {
