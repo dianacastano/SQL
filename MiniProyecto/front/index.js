@@ -27,12 +27,12 @@ class Mark
 
 function getStudent()
 {   
-    let url = "http://localhost:3000/student";
+    let url = "http://localhost:3000/alumno";
     let id = document.getElementById("student_id").value
     let final = document.getElementById("final")
 
     if (id != "") {
-        url += `?student_id=${id}`
+        url += `?id=${id}`
     }
     let param = 
     {
@@ -46,40 +46,22 @@ function getStudent()
     })
     .then(function(result)
     {      
-        // console.log(result);
+        console.log(result);
 
-        if (id === ""){
-
-            for (let id = 0 ; id < result.length ; id++) {
+        for (let i = 0 ; i < result.length ; i++) {
                 
                 final.innerHTML += `<p><div class="card text-white bg-info mb-3" style="max-width: 18rem;">
                 <div class="card-header"></div>
                 <div class="card-body">
                     <h5 class="card-title"><p></p>Datos del alumno:</h5>
-                    <p class="card-text">Nombre: ${result[id].first_name}</p>
-                    <p class="card-text">Apellido: ${result[id].last_name}</p>
-                    <p class="card-text">Grupo/Sección: ${result[id].group_id}</p>
-                    <p class="card-text">Fecha de ingreso: ${result[id].entry_year.substring(0,10)}</p>
+                    <p class="card-text">Nombre: ${result[i].first_name}</p>
+                    <p class="card-text">Apellido: ${result[i].last_name}</p>
+                    <p class="card-text">Grupo/Sección: ${result[i].group_id}</p>
+                    <p class="card-text">Fecha de ingreso: ${result[i].entry_year.substring(0,10)}</p>
                 </div>
                 </div></p>`
             }
-        } else {
-            if (result.length < id) {
-                showToast("ID: " + id +  " no existe", "bg-danger")
-            } else {
-                // console.log(result[id])
-                final.innerHTML = `<p><div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <h5 class="card-title"><p></p>Datos del alumno:</h5>
-                    <p class="card-text">Nombre: ${result[id].first_name}</p>
-                    <p class="card-text">Apellido: ${result[id].last_name}</p>
-                    <p class="card-text">Grupo/Sección: ${result[id].group_id}</p>
-                    <p class="card-text">Fecha de ingreso: ${result[id].entry_year.substring(0,10)}</p>
-                </div>
-                </div></p>`
-            }
-        }
+        
     })
     .catch(function(error)
     {
@@ -96,7 +78,7 @@ function postStudent()
                                 document.getElementById("group_id").value,
                                 document.getElementById("entry_year").value)
     
-    const url = "http://localhost:3000/student";
+    const url = "http://localhost:3000/alumno";
 
     if (validarS(student))
     {
@@ -133,11 +115,11 @@ function putStudent()
 {
     let student = new Student  (document.getElementById("first_name").value,
                                 document.getElementById("last_name").value,
-                                Number(document.getElementById("id_group").value),
-                                document.getElementById("ingreso").value,
-                                Number(document.getElementById("id_student").value))
+                                Number(document.getElementById("group_id").value),
+                                document.getElementById("entry_year").value,
+                                Number(document.getElementById("student_id").value))
     
-    const url = "http://localhost:3000/student";
+    const url = "http://localhost:3000/alumno";
 
     if (validarPut(student))
     {
@@ -176,7 +158,7 @@ function deleteStudent() {
         id= Number(id);
         let student = new Student ("","","","",id)
         
-        const url = "http://localhost:3000/student";
+        const url = "http://localhost:3000/alumno";
 
         let param = 
             {

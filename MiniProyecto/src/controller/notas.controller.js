@@ -8,7 +8,7 @@ const getNota = (req, res) => {
     if (req.query.id == null)
     sql = "SELECT * FROM mark";
     else
-    sql = "SELECT id_student, id_subject, mark from mark WHERE id_student=" + req.query.id;
+    sql = "SELECT student_id, subject_id, mark from mark WHERE student_id=" + req.query.id;
     connection.query(sql, (err, result) =>
     {
         if (err) {
@@ -50,7 +50,7 @@ const putNota = (req, res) => {
             subject_id = ${req.body.subject_id}, 
             date = "${req.body.date}", 
             mark = ${req.body.mark} 
-            WHERE id_mark = ${req.body.mark_id}`
+            WHERE mark_id = ${req.body.mark_id}`
 
     console.log(sql); 
     connection.query(sql, (err, result) => {
@@ -68,7 +68,7 @@ const putNota = (req, res) => {
 
 const deleteNota = (req, res) => {
     console.log(req.body);
-    let sql =  `DELETE FROM mark WHERE id_mark= ${req.body.mark_id}`
+    let sql =  `DELETE FROM mark WHERE mark_id= ${req.body.mark_id}`
     console.log(sql); 
     connection.query(sql, (err, result) => {
         if (err) 

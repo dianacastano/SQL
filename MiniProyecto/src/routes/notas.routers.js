@@ -2,9 +2,9 @@ const {Router} = require ("express")
 const router = Router();
 const notaCtrl = require ("../controller/notas.controller")
 
-router.get ("/nota", notaCtrl.getNota);
-router.post ("/nota", notaCtrl.postNota);
-router.put ("/nota", notaCtrl.putNota);
-router.delete ("/nota", notaCtrl.deleteNota);
+router.get ("/mark", notaCtrl.getNota);
+router.post ("/mark", notaCtrl.postNota);
+router.put ("/mark", notaCtrl.putNota);
+router.delete ("/mark", notaCtrl.deleteNota);
 
 module.exports = router;

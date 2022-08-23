@@ -28,7 +28,7 @@ let getAlumno = (req, res) => {
 const postAlumno = (req, res) => {
     console.log(req.body);
 
-    let sql = "INSERT INTO student (first_name, last_name, group_id, ingreso) " +
+    let sql = "INSERT INTO student (first_name, last_name, group_id, entry_year) " +
     "VALUES ('" + req.body.first_name + "', '" + req.body.last_name + "', '" +
             req.body.group_id + "', '" + req.body.entry_year + "')"
                 
@@ -52,9 +52,9 @@ const postAlumno = (req, res) => {
 const putAlumno = (req, res) => {
     console.log(req.body);
 
-    let sql =  `UPDATE student SET first_name1 = "${req.body.first_name}",
+    let sql =  `UPDATE student SET first_name = "${req.body.first_name}",
                 last_name= "${req.body.last_name}",
-                id_group= ${req.body.id_group},
+                group_id= ${req.body.group_id},
                 entry_year= '${req.body.entry_year}'
                 WHERE student_id= ${req.body.student_id}`      
 
