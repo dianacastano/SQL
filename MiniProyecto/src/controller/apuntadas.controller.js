@@ -9,7 +9,7 @@ const getApuntadas = (req, res) => {
     sql = "SELECT student_id, subject_id FROM mark WHERE student_id=" + req.query.id
     else 
     {
-        sql =  `SELECT first_name1, last_name1, tittle FROM student JOIN
+        sql =  `SELECT first_name, last_name, tittle FROM student JOIN
         grupo ON (student.group_id = grupo.group_id) JOIN
         subject_teacher ON (grupo.group_id = subject_teacher.group_id) JOIN
         subject ON (subject_teacher.subject_id = subject.subject_id)`

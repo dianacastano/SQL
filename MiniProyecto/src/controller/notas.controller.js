@@ -34,7 +34,7 @@ const postNota = (req, res) => {
         else {
             console.log(result);
             if (result.insertId)
-            response.send(String(result.insertId));
+            res.send(String(result.insertId));
             else
             res.send("-1");
         }
